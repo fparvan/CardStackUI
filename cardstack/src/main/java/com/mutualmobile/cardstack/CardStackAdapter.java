@@ -7,6 +7,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -179,6 +180,8 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
         if (!isScreenTouchable()) {
             return false;
         }
+
+        Log.d("TAG", "TESTING GIT TAGS");
 
         float y = event.getRawY();
         int positionOfCardToMove = (int) v.getTag(R.id.cardstack_internal_position_tag);
