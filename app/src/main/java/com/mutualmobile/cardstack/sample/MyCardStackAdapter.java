@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -62,7 +63,7 @@ public class MyCardStackAdapter extends CardStackAdapter implements CompoundButt
 
     @Override
     public View createView(int position, ViewGroup container) {
-        if (position == 0) return getSettingsView(container);
+        if (position == getCount() - 1) return getSettingsView(container);
 
         CardView root = (CardView) mInflater.inflate(R.layout.card, container, false);
         root.setCardBackgroundColor(ContextCompat.getColor(mContext, bgColorIds[position]));
@@ -75,11 +76,14 @@ public class MyCardStackAdapter extends CardStackAdapter implements CompoundButt
         CardView root = (CardView) mInflater.inflate(R.layout.settings_card, container, false);
         root.setCardBackgroundColor(ContextCompat.getColor(mContext, bgColorIds[0]));
 
+        final ScrollView scrollView = (ScrollView) root.findViewById(R.id.scroll_view);
         final Switch showInitAnimation = (Switch) root.findViewById(R.id.show_init_animation);
         final Switch parallaxEnabled = (Switch) root.findViewById(R.id.parallax_enabled);
         final EditText parallaxScale = (EditText) root.findViewById(R.id.parallax_scale);
         final EditText cardGap = (EditText) root.findViewById(R.id.card_gap);
         final EditText cardGapBottom = (EditText) root.findViewById(R.id.card_gap_bottom);
+
+        scrollView.requestDisallowInterceptTouchEvent(true);
 
         updateSettingsView = new Runnable() {
             @Override

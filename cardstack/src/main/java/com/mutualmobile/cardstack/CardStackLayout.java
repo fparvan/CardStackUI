@@ -115,6 +115,10 @@ public class CardStackLayout extends FrameLayout {
                 }
             }, 500);
         }
+        else
+        {
+            restoreCards();
+        }
     }
 
     /**
