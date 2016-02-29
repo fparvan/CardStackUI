@@ -63,8 +63,6 @@ public class MyCardStackAdapter extends CardStackAdapter implements CompoundButt
 
     @Override
     public View createView(int position, ViewGroup container) {
-        if (position == getCount() - 1) return getSettingsView(container);
-
         CardView root = (CardView) mInflater.inflate(R.layout.card, container, false);
         root.setCardBackgroundColor(ContextCompat.getColor(mContext, bgColorIds[position]));
         TextView cardTitle = (TextView) root.findViewById(R.id.card_title);

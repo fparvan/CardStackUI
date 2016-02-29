@@ -33,15 +33,6 @@ public class MainActivity extends AppCompatActivity implements OnRestartRequest 
     }
 
     @Override
-    public void onBackPressed() {
-        if (mCardStackLayout.isCardSelected()) {
-            mCardStackLayout.restoreCards();
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
     public void requestRestart() {
         log.d("Restarting MainActivity..");
         mCardStackLayout.removeAdapter();

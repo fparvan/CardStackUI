@@ -178,13 +178,6 @@ public class CardStackLayout extends FrameLayout {
     }
 
     /**
-     * @return true if a card is selected, false otherwise
-     */
-    public boolean isCardSelected() {
-        return mAdapter.isCardSelected();
-    }
-
-    /**
      * Removes the adapter that was previously set using {@link #setAdapter(CardStackAdapter)}
      */
     public void removeAdapter() {
