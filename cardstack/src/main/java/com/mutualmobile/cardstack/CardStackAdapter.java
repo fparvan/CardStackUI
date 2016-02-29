@@ -7,7 +7,6 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +37,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
 
     // Settings for the adapter from layout
     private float mCardGapBottom;
-    private float mCardGap;
+    private float mCardGapTop;
     private int mParallaxScale;
     private boolean mParallaxEnabled;
     private boolean mShowInitAnimation;
@@ -132,12 +131,11 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
 
     private float getSecondLastCardY()
     {
-        return mScreenHeight - dp30 * 4;
+        return mScreenHeight - (mCardGapBottom * 3);
     }
 
     private float getLastCardY() {
-//        return mScreenHeight - dp30 - ((getCount() - position) * mCardGapBottom) - mCardPaddingInternal;
-        return mScreenHeight - dp30 * 3;
+        return mScreenHeight - (mCardGapBottom * 2);
     }
 
     private float getCardOriginalY() {
@@ -146,12 +144,12 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
 
     private float getPositionForLastCardSwipped()
     {
-        return mParentPaddingTop + dp30 * 5;
+        return mParentPaddingTop + mCardGapTop * 2;
     }
 
     private float getSecondCardY()
     {
-        return mParentPaddingTop + (dp30 * 2);
+        return mParentPaddingTop + mCardGapTop;
     }
 
     /**
@@ -231,7 +229,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
 //                if (mTouchDistance < dp8 && Math.abs(y - mTouchFirstY) < dp8 && mSelectedCardPosition == INVALID_CARD_POSITION) {
-                if (Math.abs(v.getY() - y) < dp30 * 3)
+                if (Math.abs(v.getY() - y) < mCardGapTop * 3)
                     onClick(v);
 //                } else {
 //                    resetCards();
@@ -355,14 +353,14 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
     void setAdapterParams(CardStackLayout cardStackLayout) {
         mParent = cardStackLayout;
         mCardGapBottom = cardStackLayout.getCardGapBottom();
-        mCardGap = cardStackLayout.getCardGap();
+        mCardGapTop = cardStackLayout.getCardGapTop();
         mParallaxScale = cardStackLayout.getParallaxScale();
         mParallaxEnabled = cardStackLayout.isParallaxEnabled();
         if (mParallaxEnabled && mParallaxScale == 0)
             mParallaxEnabled = false;
         mShowInitAnimation = cardStackLayout.isShowInitAnimation();
         mParentPaddingTop = cardStackLayout.getPaddingTop();
-        fullCardHeight = (int) (mScreenHeight - dp30 - dp8 - getCount() * mCardGapBottom);
+        fullCardHeight = (int) (mScreenHeight - dp30 - dp8 - mCardGapBottom);
     }
 
     /**

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="card_gap">60dp</dimen>
-    <dimen name="card_gap_bottom">5dp</dimen>
+    <dimen name="card_gap_top">20dp</dimen>
+    <dimen name="card_gap_bottom">20dp</dimen>
     <dimen name="dp30">30dp</dimen>
     <dimen name="dp8">8dp</dimen>
     <dimen name="dp10">10dp</dimen>

@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
  * See {@link R.styleable#CardStackLayout CardStackLayout Attributes}
  *
  * {@link R.styleable#CardStackLayout_showInitAnimation}
- * {@link R.styleable#CardStackLayout_card_gap}
+ * {@link R.styleable#CardStackLayout_card_gap_top}
  * {@link R.styleable#CardStackLayout_card_gap_bottom}
  * {@link R.styleable#CardStackLayout_parallax_enabled}
  * {@link R.styleable#CardStackLayout_parallax_scale}
@@ -26,7 +26,7 @@ public class CardStackLayout extends FrameLayout {
     public static final boolean SHOW_INIT_ANIMATION_DEFAULT = true;
 
     private float mCardGapBottom;
-    private float mCardGap;
+    private float mCardGapTop;
     private boolean mShowInitAnimation;
     private boolean mParallaxEnabled;
     private int mParallaxScale;
@@ -83,7 +83,7 @@ public class CardStackLayout extends FrameLayout {
         mParallaxEnabled = a.getBoolean(R.styleable.CardStackLayout_parallax_enabled, PARALLAX_ENABLED_DEFAULT);
         mShowInitAnimation = a.getBoolean(R.styleable.CardStackLayout_showInitAnimation, SHOW_INIT_ANIMATION_DEFAULT);
         mParallaxScale = a.getInteger(R.styleable.CardStackLayout_parallax_scale, getResources().getInteger(R.integer.parallax_scale_default));
-        mCardGap = a.getDimension(R.styleable.CardStackLayout_card_gap, getResources().getDimension(R.dimen.card_gap));
+        mCardGapTop = a.getDimension(R.styleable.CardStackLayout_card_gap_top, getResources().getDimension(R.dimen.card_gap_top));
         mCardGapBottom = a.getDimension(R.styleable.CardStackLayout_card_gap_bottom, getResources().getDimension(R.dimen.card_gap_bottom));
 
         a.recycle();
@@ -155,15 +155,15 @@ public class CardStackLayout extends FrameLayout {
     /**
      * @return the gap (in pixels) between two consecutive cards
      */
-    public float getCardGap() {
-        return mCardGap;
+    public float getCardGapTop() {
+        return mCardGapTop;
     }
 
     /**
      * Set the gap (in pixels) between two consecutive cards
      */
-    public void setCardGap(float mCardGap) {
-        this.mCardGap = mCardGap;
+    public void setCardGapTop(float mCardGap) {
+        this.mCardGapTop = mCardGap;
     }
 
     /**

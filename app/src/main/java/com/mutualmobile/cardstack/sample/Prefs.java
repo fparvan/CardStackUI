@@ -25,24 +25,5 @@ public class Prefs {
         return Pref.getInt(PARALLAX_SCALE, context.getResources().getInteger(com.mutualmobile.cardstack.R.integer.parallax_scale_default));
     }
 
-    public static int getCardGap(Context context) {
-        int cardGapDimenInDp = (int) (context.getResources().getDimension(R.dimen.card_gap) / context.getResources().getDisplayMetrics().density);
-        return Pref.getInt(CARD_GAP, cardGapDimenInDp);
-    }
 
-    public static int getCardGapBottom(Context context) {
-        int cardGapBottomDimenInDp = (int) (context.getResources().getDimension(R.dimen.card_gap_bottom) / context.getResources().getDisplayMetrics().density);
-        return Pref.getInt(CARD_GAP_BOTTOM, cardGapBottomDimenInDp);
-    }
-
-    public static void resetDefaults(Context context) {
-        int cardGapDimenInDp = (int) (context.getResources().getDimension(R.dimen.card_gap) / context.getResources().getDisplayMetrics().density);
-        int cardGapBottomDimenInDp = (int) (context.getResources().getDimension(R.dimen.card_gap_bottom) / context.getResources().getDisplayMetrics().density);
-
-        Pref.putBoolean(SHOW_INIT_ANIMATION, CardStackLayout.SHOW_INIT_ANIMATION_DEFAULT);
-        Pref.putBoolean(PARALLAX_ENABLED, CardStackLayout.PARALLAX_ENABLED_DEFAULT);
-        Pref.putInt(PARALLAX_SCALE, context.getResources().getInteger(com.mutualmobile.cardstack.R.integer.parallax_scale_default));
-        Pref.putInt(CARD_GAP, cardGapDimenInDp);
-        Pref.putInt(CARD_GAP_BOTTOM, cardGapBottomDimenInDp);
-    }
 }

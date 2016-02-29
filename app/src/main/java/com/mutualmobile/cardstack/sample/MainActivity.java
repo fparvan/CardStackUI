@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity implements OnRestartRequest 
         mCardStackLayout.setParallaxEnabled(Prefs.isParallaxEnabled());
         mCardStackLayout.setParallaxScale(Prefs.getParallaxScale(this));
 
-        mCardStackLayout.setCardGap(Units.dpToPx(this, Prefs.getCardGap(this)));
-        mCardStackLayout.setCardGapBottom(Units.dpToPx(this, Prefs.getCardGapBottom(this)));
-
         mCardStackLayout.setAdapter(new MyCardStackAdapter(this));
     }
 

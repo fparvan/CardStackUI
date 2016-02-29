@@ -98,9 +98,6 @@ public class MyCardStackAdapter extends CardStackAdapter implements CompoundButt
                 parallaxScale.setText("" + Prefs.getParallaxScale(mContext));
                 parallaxScale.setEnabled(isParallaxEnabled);
 
-                cardGap.setText("" + Prefs.getCardGap(mContext));
-
-                cardGapBottom.setText("" + Prefs.getCardGapBottom(mContext));
             }
         };
 
@@ -121,7 +118,7 @@ public class MyCardStackAdapter extends CardStackAdapter implements CompoundButt
         resetDefaultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Prefs.resetDefaults(mContext);
+
                 updateSettingsView.run();
             }
         });
