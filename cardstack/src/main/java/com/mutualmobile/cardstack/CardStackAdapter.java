@@ -30,7 +30,7 @@ import java.util.List;
 public abstract class CardStackAdapter implements View.OnTouchListener, View.OnClickListener {
 
 
-    public static final int ANIM_DURATION = 1800;
+    public static final int ANIM_DURATION = 800;
     public static final int DECELERATION_FACTOR = 2;
 
     // Settings for the adapter from layout
@@ -244,11 +244,25 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
                     }
                     else if (i < mSelectedCardPosition)
                     {
-                        position = getSecondCardY();
+                        if (i == mSelectedCardPosition - 1)
+                        {
+                            position = getCardOriginalY();
+                        }
+                        else
+                        {
+                            position = getSecondCardY();
+                        }
                     }
                     else if (i == getCount() - 1)
                     {
-                        position = getLastCardY();
+                        if (mSelectedCardPosition == getCount() - 2)
+                        {
+                            position = getSecondLastCardY();
+                        }
+                        else
+                        {
+                            position = getLastCardY();
+                        }
                     }
                     else
                     {
