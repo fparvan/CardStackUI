@@ -326,6 +326,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
         {
             mCardViews[i].bringToFront();
         }
+        mCardViews[0].getParent().requestLayout();
     }
 
     private void moveCards(int positionOfCardToMove, float diff) {
