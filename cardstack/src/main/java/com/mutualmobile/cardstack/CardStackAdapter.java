@@ -157,7 +157,7 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
                 }
             }
         }
-        startAnimations(animations, r);
+        startAnimations(animations, r, 0);
         mSelectedCardPosition = 0;
         rearangeViews();
     }
@@ -167,12 +167,12 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
      * executed.
      * @param animations animations
      * @param r runnable
-     *
+     * @param duration the duration of the animation
      */
-    private void startAnimations(List<Animator> animations, final Runnable r) {
+    private void startAnimations(List<Animator> animations, final Runnable r, int duration) {
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(animations);
-        animatorSet.setDuration(ANIM_DURATION);
+        animatorSet.setDuration(duration);
         animatorSet.setInterpolator(new DecelerateInterpolator(DECELERATION_FACTOR));
         animatorSet.addListener(new AnimatorListenerAdapter() {
 
@@ -184,6 +184,11 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
             }
         });
         animatorSet.start();
+    }
+
+    private void startAnimations(List<Animator> animations, final Runnable r)
+    {
+        startAnimations(animations, r, ANIM_DURATION);
     }
 
     @Override
