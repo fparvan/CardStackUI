@@ -246,16 +246,14 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
                     if (i == 0)
                     {
                         position = getCardOriginalY();
+                        animations.add(ObjectAnimator.ofFloat(child, View.Y, (int) child.getY(), position));
                     }
                     else if (i < mSelectedCardPosition)
                     {
                         if (i == mSelectedCardPosition - 1)
                         {
                             position = getCardOriginalY();
-                        }
-                        else
-                        {
-                            position = getSecondCardY();
+                            animations.add(ObjectAnimator.ofFloat(child, View.Y, (int) child.getY(), position));
                         }
                     }
                     else if (i == getCount() - 1)
@@ -263,18 +261,16 @@ public abstract class CardStackAdapter implements View.OnTouchListener, View.OnC
                         if (mSelectedCardPosition == getCount() - 2)
                         {
                             position = getSecondLastCardY();
-                        }
-                        else
-                        {
-                            position = getLastCardY();
+                            animations.add(ObjectAnimator.ofFloat(child, View.Y, (int) child.getY(), position));
                         }
                     }
                     else
                     {
                         position = getSecondLastCardY();
+                        animations.add(ObjectAnimator.ofFloat(child, View.Y, (int) child.getY(), position));
                     }
 
-                    animations.add(ObjectAnimator.ofFloat(child, View.Y, (int) child.getY(), position));
+
                 }
                 else
                 {
